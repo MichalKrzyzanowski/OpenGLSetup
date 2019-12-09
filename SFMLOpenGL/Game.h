@@ -21,6 +21,10 @@ private:
 	void draw();
 	void unload();
 
+	sf::Clock m_timer;
+
+	int shape{ 1 };
+
 	// // Uncomment for Part 2
 	// // ********************
 	// const int primatives;

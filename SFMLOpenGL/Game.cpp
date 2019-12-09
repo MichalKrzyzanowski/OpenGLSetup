@@ -33,16 +33,25 @@ void Game::run()
 void Game::initialize()
 {
 	isRunning = true;
-
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION); glLoadIdentity();
 	gluPerspective(45.0, window.getSize().x / window.getSize().y, 1.0, 500.0);
 	glMatrixMode(GL_MODELVIEW);
 }
 
 void Game::update()
 {
+	if (m_timer.getElapsedTime().asSeconds() > 1)
+	{
+		shape++;
+		m_timer.restart();
+	}
+
+	if (shape > 10)
+	{
+		shape = 1;
+	}
+
 	cout << "Update up" << endl;
 }
 
@@ -50,13 +59,122 @@ void Game::draw()
 {
 	cout << "Draw up" << endl;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glBegin(GL_TRIANGLES);
+
+	if (shape == 1)
 	{
-		glVertex3f(0.0, 2.0, -5.0);
-		glVertex3f(-2.0, -2.0, -5.0);
-		glVertex3f(-2.0, -2.0, -5.0);
+		glBegin(GL_TRIANGLES);
+		{
+			glVertex3f(0.0, 2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+		}
+		glEnd();
 	}
-	glEnd();
+
+	if (shape == 2)
+	{
+		glBegin(GL_POINTS);
+		{
+			glVertex3f(0.0, 2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 3)
+	{
+		glBegin(GL_LINES);
+		{
+			glVertex3f(0.0, 2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 4)
+	{
+		glBegin(GL_LINE_STRIP);
+		{
+			glVertex3f(0.0, 2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 5)
+	{
+		glBegin(GL_LINE_LOOP);
+		{
+			glVertex3f(0.0, 2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 6)
+	{
+		glBegin(GL_TRIANGLE_STRIP);
+		{
+			glVertex3f(0.0, 2.0, 5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(-2.0, 0.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 7)
+	{
+		glBegin(GL_TRIANGLE_FAN);
+		{
+			glVertex3f(0.0, 2.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+			glVertex3f(-0.0, 2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+			glVertex3f(2.0, 2.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 8)
+	{
+		glBegin(GL_QUADS);
+		{
+			glVertex3f(-2.0, 0.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+			glVertex3f(2.0, 0.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 9)
+	{
+		glBegin(GL_QUAD_STRIP);
+		{
+			glVertex3f(-2.0, 0.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+			glVertex3f(2.0, 0.0, -5.0);
+		}
+		glEnd();
+	}
+
+	if (shape == 10)
+	{
+		glBegin(GL_POLYGON);
+		{
+			glVertex3f(-2.0, 0.0, -5.0);
+			glVertex3f(-2.0, -2.0, -5.0);
+			glVertex3f(2.0, -2.0, -5.0);
+			glVertex3f(-2.0, -0.0, 5.0);
+		}
+		glEnd();
+	}
 
 	window.display();
 }
