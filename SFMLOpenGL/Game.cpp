@@ -33,6 +33,12 @@ void Game::run()
 void Game::initialize()
 {
 	isRunning = true;
+
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45.0, window.getSize().x / window.getSize().y, 1.0, 500.0);
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void Game::update()
@@ -43,6 +49,16 @@ void Game::update()
 void Game::draw()
 {
 	cout << "Draw up" << endl;
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glBegin(GL_TRIANGLES);
+	{
+		glVertex3f(0.0, 2.0, -5.0);
+		glVertex3f(-2.0, -2.0, -5.0);
+		glVertex3f(-2.0, -2.0, -5.0);
+	}
+	glEnd();
+
+	window.display();
 }
 
 void Game::unload()
