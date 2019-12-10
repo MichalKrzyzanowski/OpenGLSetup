@@ -133,7 +133,7 @@ void Game::initialize()
 	glNewList(index + 6, GL_COMPILE);
 	glBegin(GL_TRIANGLE_STRIP);
 	{
-		glVertex3f(0.0, 2.0, 5.0);
+		glVertex3f(2.0, 2.0, -5.0);
 		glVertex3f(2.0, -2.0, -5.0);
 		glVertex3f(-2.0, -2.0, -5.0);
 		glVertex3f(-2.0, 0.0, -5.0);
@@ -175,6 +175,8 @@ void Game::initialize()
 		glVertex3f(-2.0, -2.0, -5.0);
 		glVertex3f(2.0, -2.0, -5.0);
 		glVertex3f(2.0, 0.0, -5.0);
+		glVertex3f(2.0, 2.0, -5.0);
+		glVertex3f(0.0, 2.0, -5.0);
 	}
 	glEnd();
 	glEndList();
@@ -183,10 +185,10 @@ void Game::initialize()
 	glNewList(index + 10, GL_COMPILE);
 	glBegin(GL_POLYGON);
 	{
-		glVertex3f(-2.0, 0.0, -5.0);
-		glVertex3f(-2.0, -2.0, -5.0);
+		glVertex3f(-2.0, 2.0, -5.0);
+		glVertex3f(-2.0, 2.0, -5.0);
 		glVertex3f(2.0, -2.0, -5.0);
-		glVertex3f(-2.0, -0.0, 5.0);
+		glVertex3f(-2.0, -0.0, -5.0);
 	}
 	glEnd();
 	glEndList();
